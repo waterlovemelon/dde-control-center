@@ -50,8 +50,6 @@ public:
 
     QWidget *leftWidget() const { return m_leftWidget; }
     QHBoxLayout* getMainLayout() { return m_mainLayout; }
-
-public:
     inline DTK_WIDGET_NAMESPACE::DSwitchButton *switchButton() const { return m_switchBtn; }
 
 Q_SIGNALS:

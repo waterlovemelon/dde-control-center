@@ -38,6 +38,7 @@ InsertPlugin::InsertPlugin(QObject *obj, FrameProxyInterface *frameProxy)
         et.start();
         QPluginLoader loader(path);
         const QJsonObject &meta = loader.metaData().value("MetaData").toObject();
+        qDebug() << "api: " << meta.value("api").toString();
         if (!compareVersion(meta.value("api").toString(), "1.0.0"))
         {
             qDebug() << "plugin's version is too low";

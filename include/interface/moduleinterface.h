@@ -31,7 +31,7 @@
 namespace DCC_NAMESPACE {
 
 // ModuleInterface作为每个规范每个Module的接口，每个Module实现必须实现其所有虚函数。
-class ModuleInterface
+class  ModuleInterface
 {
 public:
     ModuleInterface() = default;

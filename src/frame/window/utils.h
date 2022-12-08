@@ -16,7 +16,10 @@
 #include <DPlatformHandle>
 #include <QDateTime>
 
+#include <DGuiApplicationHelper>
+
 DCORE_USE_NAMESPACE
+DGUI_USE_NAMESPACE
 
 namespace DCC_NAMESPACE {
 
@@ -55,7 +58,7 @@ const bool IsProfessionalSystem = (DSysInfo::UosProfessional == UosEdition);//�
 const bool IsHomeSystem = (DSysInfo::UosHome == UosEdition);//是否是个人版
 const bool IsEducationSystem = (DSysInfo::UosEducation == UosEdition); // 是否是教育版
 const bool IsDeepinDesktop = (DSysInfo::DeepinDesktop == DSysInfo::deepinType());//是否是Deepin桌面
-const bool IsNotDeepinUos = !DSysInfo::isDeepin(); // 是否是 Deepin/Uos 以外的发行版 
+const bool IsNotDeepinUos = !DSysInfo::isDeepin(); // 是否是 Deepin/Uos 以外的发行版
 const bool DisableDeveloperMode = {
 #ifdef DISABLE_DEVELOPER_MODE
   true
@@ -175,6 +178,15 @@ inline QString getSecurityKeyDisplayData(QString key)
         value = value.left(value.length() - 1);
     }
     return value;
+}
+
+inline QString getThemeName()
+{
+    DGuiApplicationHelper::ColorType colorType = DGuiApplicationHelper::instance()->themeType();
+    if (DGuiApplicationHelper::ColorType::DarkType == colorType)
+        return "dark";
+
+    return "light";
 }
 
 }

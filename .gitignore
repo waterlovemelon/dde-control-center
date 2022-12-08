@@ -34,3 +34,4 @@ build*/
 .transifexrc
 lupdate.sh
 .cache/
+test.sh

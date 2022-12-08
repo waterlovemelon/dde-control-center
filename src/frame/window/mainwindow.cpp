@@ -13,9 +13,6 @@
 #include "modules/keyboard/keyboardmodule.h"
 #include "modules/power/powermodule.h"
 #include "modules/sound/soundmodule.h"
-#ifndef DISABLE_SYS_UPDATE
-#include "modules/update/updatemodule.h"
-#endif
 #include "modules/mouse/mousemodule.h"
 #include "modules/wacom/wacommodule.h"
 #include "modules/display/displaymodule.h"
@@ -25,7 +22,6 @@
 #include "modules/notification/notificationmodule.h"
 #include "modules/systeminfo/systeminfomodule.h"
 #include "modules/defapp/defaultappsmodule.h"
-#include "modules/update/mirrorswidget.h"
 #include "widgets/multiselectlistview.h"
 #include "mainwindow.h"
 #include "insertplugin.h"
@@ -342,9 +338,6 @@ void MainWindow::initAllModule(const QString &m)
     using namespace sound;
     using namespace personalization;
     using namespace power;
-#ifndef DISABLE_SYS_UPDATE
-    using namespace update;
-#endif
     using namespace keyboard;
     using namespace wacom;
     using namespace systeminfo;
@@ -368,9 +361,6 @@ void MainWindow::initAllModule(const QString &m)
         { new MouseModule(this), tr("Mouse")},
         { new WacomModule(this), tr("Drawing Tablet")},
         { new KeyboardModule(this), tr("Keyboard and Language")},
-#ifndef DISABLE_SYS_UPDATE
-        { new UpdateModule(this), tr("Updates")},
-#endif
         { new SystemInfoModule(this), tr("System Info")},
         { new CommonInfoModule(this), tr("General Settings")},
     };

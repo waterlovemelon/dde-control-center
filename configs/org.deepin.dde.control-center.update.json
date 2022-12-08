@@ -45,6 +45,17 @@
             "description": "",
             "permissions": "readonly",
             "visibility": "private"
+        },
+        "disableUpdate": {
+            "value": false,
+            "serial": 0,
+            "flags": ["global"],
+            "name": "Disable update",
+            "name[zh_CN]": "禁止更新",
+            "description[zh_CN]": "禁止更新",
+            "description": "",
+            "permissions": "readwrite",
+            "visibility": "private"
         }
     }
   }

@@ -26,11 +26,9 @@ if (DEFINED ENABLE_MIEEE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mieee")
 endif()
 
-
 set(DEFINED_LIST
 DISABLE_OPACITY_ANIMATION
 DISABLE_CLOUD_SYNC
-DISABLE_SYS_UPDATE
 DISABLE_AUTHENTICATION
 DISABLE_ACCOUNT
 DISABLE_DISPLAY
@@ -44,8 +42,6 @@ DISABLE_MOUSE
 DISABLE_KAYBOARD
 DISABLE_WACOM
 DISABLE_SYSINFO
-DISABLE_SYS_UPDATE_SOURCE_CHECK
-DISABLE_SYS_UPDATE_MIRRORS
 DISABLE_MAIN_PAGE
 DISABLE_RECOVERY
 DISABLE_DEVELOPER_MODE
@@ -127,15 +123,6 @@ set(WINDOW_FILES
     window/modules/sound/microphonepage.cpp
     window/modules/sound/soundeffectspage.cpp
     window/modules/sound/devicemanagespage.cpp
-    window/modules/update/updatemodule.cpp
-    window/modules/update/updatewidget.cpp
-    window/modules/update/updatectrlwidget.cpp
-    window/modules/update/updatesettings.cpp
-    window/modules/update/loadingitem.cpp
-    window/modules/update/updatehistorybutton.cpp
-    window/modules/update/recenthistoryapplist.cpp
-    window/modules/update/mirrorswidget.cpp
-    window/modules/update/mirrorsourceitem.cpp
     window/search/searchwidget.cpp
     window/search/searchmodel.cpp
     window/modules/commoninfo/commoninfomodule.cpp
@@ -153,18 +140,6 @@ set(WINDOW_FILES
     window/modules/commoninfo/developermodewidget.cpp
     window/modules/commoninfo/developermodedialog.cpp
 )
-
-if (DEFINED DISABLE_SYS_UPDATE)
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/updatemodule.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/updatewidget.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/updatectrlwidget.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/updatesettings.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/loadingitem.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/updatehistorybutton.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/recenthistoryapplist.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/mirrorswidget.cpp")
-  list(REMOVE_ITEM WINDOW_FILES "window/modules/update/mirrorsourceitem.cpp")
-endif()
 
 # load interfaces
 set(INTERFACES_FILES
@@ -489,27 +464,6 @@ set(SYSTEMINFO_FILES
                 window/modules/systeminfo/privacypolicywidget.cpp
 )
 
-# load update
-if (NOT DISABLE_SYS_UPDATE)
-set(UPDATE_FILES
-                modules/update/loadingitem.cpp
-                modules/update/resultitem.cpp
-                modules/update/summaryitem.cpp
-                modules/update/updateitem.cpp
-                modules/update/updatework.cpp
-                modules/update/downloadprogressbar.cpp
-                modules/update/updatemodel.cpp
-                modules/update/updateiteminfo.cpp
-
-                window/modules/update/updatecontrolpanel.cpp
-                window/modules/update/updatesettingitem.cpp
-                window/modules/update/systemupdateitem.cpp
-                window/modules/update/appstoreupdateitem.cpp
-                window/modules/update/safeupdateitem.cpp
-                window/modules/update/unknownupdateitem.cpp
-)
-endif()
-
 # load wacom
 set(WACOM_FILES
                 modules/wacom/model/wacommodelbase.cpp
@@ -547,7 +501,6 @@ set(SRCS
         ${SOUND_FILES}
         ${POWER_FILES}
         ${WACOM_FILES}
-        ${UPDATE_FILES}
         ${SYNC_FILES}
         ${SYSTEMINFO_FILES}
         ${PERSONALIZATION_FILES}
@@ -561,7 +514,6 @@ endif()
 set(QRC
         frame.qrc
         modules/wacom/wacom.qrc
-        modules/update/update.qrc
         modules/datetime/datetime.qrc
         modules/datetime/timezone_dialog.qrc
         modules/power/power.qrc
@@ -579,7 +531,6 @@ set(QRC
         window/search/translator/languages.qrc
         window/icons/dde-control-center-icons.qrc
         window/modules/datetime/datetime.qrc
-        window/modules/update/dccv20update.qrc
 )
 
 if (DEFINED DISABLE_AUTHENTICATION)
@@ -661,14 +612,11 @@ endif()
 if (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "sw_64")
     set(BUILD_MACRO
         ${BUILD_MACRO}
-        DISABLE_SYS_UPDATE_SOURCE_CHECK
-        DISABLE_SYS_UPDATE_MIRRORS
         DCC_DISABLE_MIRACAST
         DCC_ENABLE_AUTOSTART
         DCC_DISABLE_POWERSAVE
         DCC_KEEP_SETTINGS_LIVE
         DCC_DISABLE_OPACITY_ANIMATION
-        DISABLE_SYS_UPDATE_MIRRORS
         DCC_DISABLE_FEEDBACK
         DISABLE_CLOUD_SYNC
         DISABLE_SCREEN_RECORDING
@@ -679,7 +627,6 @@ endif()
 if (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "mips64")
     set(BUILD_MACRO
         ${BUILD_MACRO}
-        DISABLE_SYS_UPDATE_SOURCE_CHECK
         DCC_DISABLE_MIRACAST
         DCC_ENABLE_AUTOSTART
         DCC_DISABLE_OPACITY_ANIMATION

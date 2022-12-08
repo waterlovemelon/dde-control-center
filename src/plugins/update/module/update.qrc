@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/update">
+        <file>themes/dark/dark.qss</file>
+        <file>themes/light/light.qss</file>
+        <file>themes/light/icons/select.png</file>
+        <file>themes/common/icons/success.svg</file>
+        <file>themes/common/icons/failed.svg</file>
+        <file>themes/dark/icons/select.svg</file>
+        <file>themes/dark/icons/nav_update_normal.svg</file>
+        <file>themes/dark/icons/nav_update.svg</file>
+        <file>themes/dde.svg</file>
+        <file>themes/common/config/mirrors.json</file>
+        <file>themes/light/icons/noactive.svg</file>
+        <file>themes/dark/icons/noactive.svg</file>
+        <file>themes/light/icons/prohibit.svg</file>
+        <file>themes/dark/icons/prohibit.svg</file>
+    </qresource>
+</RCC>

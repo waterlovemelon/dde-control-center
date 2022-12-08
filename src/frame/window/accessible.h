@@ -87,8 +87,6 @@
 #include "./modules/systeminfo/versionprotocolwidget.h"
 #include "./modules/systeminfo/userlicensewidget.h"
 
-#include "./modules/update/updatewidget.h"
-
 #include "./modules/wacom/wacomwidget.h"
 
 #include "./widgets/multiselectlistview.h"
@@ -238,11 +236,6 @@ SET_FORM_ACCESSIBLE(SystemInfoWidget, "SystemInfoWidget")
 SET_FORM_ACCESSIBLE(NativeInfoWidget, "NativeInfoWidget")
 SET_FORM_ACCESSIBLE(UserLicenseWidget, "UserLicenseWidget")
 
-// 更新模块
-using namespace DCC_NAMESPACE::update;
-
-SET_FORM_ACCESSIBLE(UpdateWidget, "UpdateWidget")
-
 // 手写板模块
 using namespace DCC_NAMESPACE::wacom;
 
@@ -383,9 +376,6 @@ QAccessibleInterface *accessibleFactory(const QString &classname, QObject *objec
     USE_ACCESSIBLE(QString(classname).replace("dccV20::systeminfo::", ""), SystemInfoWidget);
     USE_ACCESSIBLE(QString(classname).replace("dccV20::systeminfo::", ""), NativeInfoWidget);
     USE_ACCESSIBLE(QString(classname).replace("dccV20::systeminfo::", ""), UserLicenseWidget);
-
-    // 更新模块
-    USE_ACCESSIBLE(QString(classname).replace("dccV20::update::", ""), UpdateWidget);
 
     // 手写板模块
     USE_ACCESSIBLE(QString(classname).replace("dccV20::wacom::", ""), WacomWidget);
